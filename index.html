@@ -6,7 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Choose a letter to get started!</h1>
+
+    <p id="word"></p>
+    <p>Guessed Letters</p>
+    <p id="guessed-letters"></p>
+    <p>Wins</p>
+    <p id="wins"></p>
+
     <script type="text/javascript">
 
     // time for pseudocode yo!//
@@ -15,31 +22,44 @@
 
     //first we'll need an array of words, probably, for peeps to guess//
 
-    var breakfastFoods = ["pancakes", "over easy", "bacon", "eggs benedict", "syrup", "waffles", "oatmeal", "hasbrowns"];
+    var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
 
-    //then we'll need something like Press a key to start playing or whatevs.//
+    console.log(breakfastFoods);
+    
+    var word = document.getElementById("word");
+    var guessedLetters = document.getElementById("guessed-letters");
+    var wins = document.getElementById("wins");
 
-    //we'll need a function here to choose a random word from the array//
+    //choosing a random word from the array
 
-    //I'm thinking we're gonna need a butt load of if else statements to go through each word.
-    //I'm wondering if there is a faster way to do it, but probably not lol.//
+    var wordChoice = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)]
 
-    //then we'll need an incrementing wins//
+    console.log(wordChoice);
 
-    //incrementing guesses - number of guesses remaining//
+    //code to display the blanks
 
-    //then we'll need something that keeps track of the guessed letters//
+   for (var i = 0; i < wordChoice.length; i++){
+       document.write(" _ ");
+   }
 
-    //something that will make the letters _ _ _ like that until the right letter is guessed//
+    //getting a letter from the user and checking if it's in the string
 
-    //my psuedocode is ridiculous, but listen nobody else is gonna see it so it's okay for now 
-    //what can I say, this is how I roll
-    //the burden of being creative omg
-    //what a hard life I have
-    //also my cat is being ridiculous 
-    //am I really surprised?
-    //no
-    //no I'm not
+   document.onkeyup = function(event){
+      var letter = event.key;
+         if (wordChoice.indexOf(letter.toLowerCase()) >= 0) {
+                console.log(letter);
+        } else {
+                
+        }
+   };
+
+
+
+    //if it does exist, add it to the display of the word, otherwise add it to the guessed letters
+
+    //increment guesses but I think only if the letter is wrong
+
+    //go through all the letters then increment wins if the player wins
 
     </script>
 </body>
