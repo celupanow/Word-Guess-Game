@@ -1,57 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Choose a letter to get started!</h1>
 
     <p id="word"></p>
-    <p>Guessed Letters</p>
+    <p>Guessed Letters:</p>
     <p id="guessed-letters"></p>
-    <p>Wins</p>
+    <p>Guesses Left:</p>
+    <p id="guesses-left"></p>
+    <p>Wins:</p>
     <p id="wins"></p>
 
     <script type="text/javascript">
 
-    // time for pseudocode yo!//
-
-    //word guess game//
-
-    //first we'll need an array of words, probably, for peeps to guess//
-
-    var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
-
-    console.log(breakfastFoods);
     
-    var word = document.getElementById("word");
-    var guessedLetters = document.getElementById("guessed-letters");
-    var wins = document.getElementById("wins");
 
-    //choosing a random word from the array
+        //first we'll need an array of words
 
-    var wordChoice = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)]
+      //  var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+            "s", "t", "u", "v", "w", "x", "y", "z"];
+        var letterArray = [];
+        var guessesLeft = 9;
+        var guessedLetters = [];
+        var wins = 0;
 
-    console.log(wordChoice);
+        
+        //choosing a random word from the array
+       //var word = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)]
 
-    //code to display the blanks
+      //  console.log(word);
 
-   for (var i = 0; i < wordChoice.length; i++){
-       document.write(" _ ");
-   }
+        //display the blanks with an array
 
-    //getting a letter from the user and checking if it's in the string
+     //  for (var i = 0; i < word.length; i++) {
+       //     letterArray[i] = "_";
+       // }
+       // document.getElementById("word").textContent = letterArray.join(" ");
 
-   document.onkeyup = function(event){
-      var letter = event.key;
-         if (wordChoice.indexOf(letter.toLowerCase()) >= 0) {
-                console.log(letter);
-        } else {
-                
+
+        //getting a letter from the user and checking if it's in the string
+        newGame();
+
+        document.onkeyup = function (event) {
+            var letter = event.key;
+            
+            
+
+
+           for (var j = 0; j < word.length; j++) {
+                if (word[j] === letter) {
+                    letterArray[j] = letter;
+                    document.getElementById("word").textContent = letterArray.join(" ");
+                }
+                }
+
+            if ((word.includes(letter) === false) && (alphabet.includes(letter) === true)) {
+                guessedLetters.push(letter);
+                document.getElementById("guessed-letters").textContent = guessedLetters.join(" ");
+                guessesLeft--;
+                document.getElementById("guesses-left").textContent = guessesLeft;
+                var index = alphabet.indexOf(letter.toLowerCase());
+                if (index > -1) {
+                       alphabet.splice(index, 1);
+                       console.log(alphabet);}
+            } 
+
+            
+
+
+            
         }
-   };
+
+        var check = letterArray.indexOf("_");
+
+        if (guessesLeft === 0) {
+                newGame();
+            } else if (check === -1) {
+                wins++;
+                document.getElementById("wins").textContent - wins;
+                newGame();
+            }
+
+        function newGame() {
+            var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+            "s", "t", "u", "v", "w", "x", "y", "z"];
+        var letterArray = [];
+        var guessesLeft = 9;
+        var guessedLetters = [];
+        
+            word = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)];
+            console.log(word);
+
+            for (var i = 0; i < word.length; i++) {
+            letterArray[i] = "_";
+        }
+        document.getElementById("word").textContent = letterArray.join(" ");
+    
+        }
+           
+        
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+   //if (word.indexOf(letter.toLowerCase()) >= 0) {
+    //            console.log(letter);
+      //  } else {
+      //     guessedLetters.push(letter);
+      //     document.write(guessedLetters);     
+      //  }
+
+
+
 
 
 
@@ -63,4 +147,5 @@
 
     </script>
 </body>
+
 </html>
