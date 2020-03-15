@@ -1,8 +1,8 @@
 
-
-
-
-//first we'll need an array of words
+//Declaring the variables - breakfastFoods array for the list of words, alphabet array to keep track of
+//letters already guessed, letterArray currently empty but exists to create the blank spaces,
+//guessesLeft counter, guessedLetters an empty array that will have the user's incorrect guesses pushed to it,
+//wins counter, and letter for the guess
 
 var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
@@ -11,31 +11,20 @@ var letterArray = [];
 var guessesLeft = 9;
 var guessedLetters = [];
 var wins = 0;
+var letter = 0;
 
+// newGame function starts the game
 
-//choosing a random word from the array
-var word = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)]
+newGame();
 
-console.log(word);
-
-//display the blanks with an array
-
-for (var i = 0; i < word.length; i++) {
-    letterArray[i] = "_";
-}
-document.getElementById("word").textContent = letterArray.join(" ");
-
-document.getElementById("guessed-letters").textContent = guessedLetters;
-document.getElementById("guesses-left").textContent = guessesLeft;
-document.getElementById("wins").textContent = wins;
-
-
-
-//getting a letter from the user and checking if it's in the string
-
+// taking input from the user with the onkeyup event, then checking to see if that letter is in the word,
+//how many times it's in the word, and then displaying to the equivalent index in the letterArray, then checking
+//to see if the letter is in the not in the word and is still in the alphabet array, if letter meets those conditions,
+//then it gets pushed the guessedLetters array, guessesLeft decreases, and the letter is removed from the alphabet
+//array. Also the guessedLetters array and the guessesLeft int are displayed.
 
 document.onkeyup = function (event) {
-    var letter = event.key;
+    letter = event.key;
 
     for (var j = 0; j < word.length; j++) {
         if (word[j] === letter) {
@@ -53,19 +42,23 @@ document.onkeyup = function (event) {
             }
         }
 
-        var check = letterArray.indexOf("_");
+    //If guessesLeft is 0, reset the game. Else if there are no blanks left in the letterArray,
+    //increment wins, and reset the game.
 
         if (guessesLeft === 0) {
             newGame();
-        } else if (check === -1) {
+        } else if (letterArray.indexOf("_") === -1) {
             wins++;
-            document.getElementById("wins").textContent = wins;
             newGame();
         }
 
     }
 
 }
+
+//newGame function resets all of our variables, chooses a random word out of the breakfastFoods array,
+//creates the letterArray to have as many blanks as needed for the word, and
+//displays the letterArray, guessedLetters, guessesLeft, and wins.
 
 
 function newGame() {
@@ -83,9 +76,11 @@ function newGame() {
     for (var i = 0; i < word.length; i++) {
         letterArray[i] = "_";
     }
+
     document.getElementById("word").textContent = letterArray.join(" ");
-
-
+    document.getElementById("guessed-letters").textContent = guessedLetters;
+    document.getElementById("guesses-left").textContent = guessesLeft;
+    document.getElementById("wins").textContent = wins;
 
 }
 

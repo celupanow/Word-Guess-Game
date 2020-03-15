@@ -4,13 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="jsfile.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Time for Brekkie!</title>
 </head>
 
 <body>
-    <h1>Choose a letter to get started!</h1>
 
+    <div class="container mainContainer">
+
+    <h1 class="jumbotron text-center">Choose a letter to get started!</h1>
+
+    <div class="row bg-white text-center">
+        <div class="col-md-6">
+            image
+        </div>
+        <div class="col-md-6">
     <p id="word"></p>
     <p>Guessed Letters:</p>
     <p id="guessed-letters"></p>
@@ -18,8 +28,10 @@
     <p id="guesses-left"></p>
     <p>Wins:</p>
     <p id="wins"></p>
-
-    
+        </div>
+    </div>
+</div>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
 </html>
