@@ -1,18 +1,19 @@
+
+/* adding background color, opacity, height, width, padding, and font to the jumbotron */
 .jumbotron {
     font-family: 'Special Elite', cursive;
     background: rgba(255, 253, 208, 0.8);
     width: 100%;
     height: 50px;
-    
     padding-top: 20px;
 }
 
-/* https://stackoverflow.com/questions/22000754/responsive-bootstrap-jumbotron-background-image */
-
+/* background image of donuts */
 body {
 	background: url(../images/donutbackground.jpg);
 }
 
+/* adding background color, opacity, and font styling to the main container */
 .mainContainer {
     background: rgba(255, 253, 208, 0.8);
     font-weight: bold;
@@ -20,15 +21,18 @@ body {
     font-family: 'Special Elite', cursive;
 }
 
+/* changing the padding for the column the game is in */
 .game {
     padding: 100px 0px 0px 0px;
 }
 
+/* changing the margin and padding for the column the image is in */
 .image {
     padding: 10px 0px 10px 0px;
     margin: 0px 0px 0px 0px;
 }
 
+/* changing the margin for the row the two columns are in */
 .row {
     margin: 0px 0px 20px 0px;
 }

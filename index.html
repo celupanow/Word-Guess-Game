@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <!-- all our default stuff,
+    linking to bootstrap, external css, and a google font-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -12,12 +14,12 @@
 </head>
 
 <body>
-
+    <!-- jumbotron for the title, it's outside the container so it will span the width of the page -->
     <h1 class="jumbotron text-center">Breakfast Time</h1>
 
+    <!-- container with one row that has two columns: image column holds an image of breakfast,
+    game column holds the game itself -->
     <div class="container mainContainer">
-
-    
 
     <div class="row text-center">
         <div class="col-md-6 image">
@@ -35,6 +37,9 @@
         </div>
     </div>
 </div>
+
+    <!-- script tags at the bottom because it didn't work right when it was at the top,
+    looked into this and can use document ready method in jquery-->
     <script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 
