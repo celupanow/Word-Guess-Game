@@ -4,7 +4,8 @@
 //guessesLeft counter, guessedLetters an empty array that will have the user's incorrect guesses pushed to it,
 //wins counter, and letter for the guess
 
-var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
+var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns", "coffee", "overeasy",
+"biscuits", "cereal", "quiche", "crepes", "bagels", "donuts", "sausage", "muffins", "toast"];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
     "s", "t", "u", "v", "w", "x", "y", "z"];
 var letterArray = [];
@@ -62,7 +63,8 @@ document.onkeyup = function (event) {
 
 
 function newGame() {
-    breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns"];
+    breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns", "coffee", "overeasy",
+    "biscuits", "cereal", "quiche", "crepes", "bagels", "donuts", "sausage", "muffins", "toast"];
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
         "s", "t", "u", "v", "w", "x", "y", "z"];
     letterArray = [];

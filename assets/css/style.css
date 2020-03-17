@@ -1,0 +1,34 @@
+.jumbotron {
+    font-family: 'Special Elite', cursive;
+    background: rgba(255, 253, 208, 0.8);
+    width: 100%;
+    height: 50px;
+    
+    padding-top: 20px;
+}
+
+/* https://stackoverflow.com/questions/22000754/responsive-bootstrap-jumbotron-background-image */
+
+body {
+	background: url(../images/donutbackground.jpg);
+}
+
+.mainContainer {
+    background: rgba(255, 253, 208, 0.8);
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Special Elite', cursive;
+}
+
+.game {
+    padding: 100px 0px 0px 0px;
+}
+
+.image {
+    padding: 10px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.row {
+    margin: 0px 0px 20px 0px;
+}
