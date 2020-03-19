@@ -1,79 +1,41 @@
 
-//Declaring the variables - breakfastFoods array for the list of words, alphabet array to keep track of
-//letters already guessed, letterArray currently empty but exists to create the blank spaces,
-//guessesLeft counter, guessedLetters an empty array that will have the user's incorrect guesses pushed to it,
-//wins counter, and letter for the guess
-
+//array of words
 var breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns", "coffee", "overeasy",
-"biscuits", "cereal", "quiche", "crepes", "bagels", "donuts", "sausage", "muffins", "toast"];
+    "cereal", "bagels", "donuts", "sausage", "toast"];
+//array of images
+var images = ["assets/images/img1.jpg", "assets/images/img2.jpg", "assets/images/img3.jpg", "assets/images/img4.jpg",
+    "assets/images/img5.jpg", "assets/images/img6.jpg", "assets/images/img7.jpg", "assets/images/img8.jpg",
+    "assets/images/img9.jpg", "assets/images/img10.jpg", "assets/images/img11.jpg", "assets/images/img12.jpg",
+    "assets/images/img13.jpg"];
+//array for the alphabet
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
     "s", "t", "u", "v", "w", "x", "y", "z"];
+//empty letterArray to create dashes
 var letterArray = [];
+//guessesLeft variable
 var guessesLeft = 9;
+//empty guessedLetters array for already guessed letters
 var guessedLetters = [];
+//wins variable
 var wins = 0;
+//letter variable
 var letter = 0;
+//imageIndex variable
+var imageIndex = 0;
 
-// newGame function starts the game
-
-newGame();
-
-// taking input from the user with the onkeyup event, then checking to see if that letter is in the word,
-//how many times it's in the word, and then displaying to the equivalent index in the letterArray, then checking
-//to see if the letter is in the not in the word and is still in the alphabet array, if letter meets those conditions,
-//then it gets pushed the guessedLetters array, guessesLeft decreases, and the letter is removed from the alphabet
-//array. Also the guessedLetters array and the guessesLeft int are displayed.
-
-document.onkeyup = function (event) {
-    letter = event.key;
-
-    for (var j = 0; j < word.length; j++) {
-        if (word[j] === letter) {
-            letterArray[j] = letter;
-            document.getElementById("word").textContent = letterArray.join(" ");
-        } else if ((word.includes(letter) === false) && (alphabet.includes(letter) === true)) {
-            guessedLetters.push(letter);
-            document.getElementById("guessed-letters").textContent = guessedLetters.join(" ");
-            guessesLeft--;
-            document.getElementById("guesses-left").textContent = guessesLeft;
-            var index = alphabet.indexOf(letter.toLowerCase());
-            if (index > -1) {
-                alphabet.splice(index, 1);
-                console.log(alphabet);
-            }
-        }
-
-    //If guessesLeft is 0, reset the game. Else if there are no blanks left in the letterArray,
-    //increment wins, and reset the game.
-
-        if (guessesLeft === 0) {
-            newGame();
-        } else if (letterArray.indexOf("_") === -1) {
-            wins++;
-            newGame();
-        }
-
-    }
-
-}
-
-//newGame function resets all of our variables, chooses a random word out of the breakfastFoods array,
-//creates the letterArray to have as many blanks as needed for the word, and
-//displays the letterArray, guessedLetters, guessesLeft, and wins.
-
-
+//a function that resets the variables, picks a new word, creates the dash array, and displays the new info
 function newGame() {
     breakfastFoods = ["pancakes", "bacon", "syrup", "waffles", "oatmeal", "hashbrowns", "coffee", "overeasy",
-    "biscuits", "cereal", "quiche", "crepes", "bagels", "donuts", "sausage", "muffins", "toast"];
+        "cereal", "bagels", "donuts", "sausage", "toast"];
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
         "s", "t", "u", "v", "w", "x", "y", "z"];
     letterArray = [];
     guessesLeft = 9;
     guessedLetters = [];
     letter = 0;
+    imageIndex = 0;
 
     word = breakfastFoods[Math.floor(Math.random() * breakfastFoods.length)];
-    console.log(word);
 
     for (var i = 0; i < word.length; i++) {
         letterArray[i] = "_";
@@ -83,8 +45,55 @@ function newGame() {
     document.getElementById("guessed-letters").textContent = guessedLetters;
     document.getElementById("guesses-left").textContent = guessesLeft;
     document.getElementById("wins").textContent = wins;
+}
+
+// newGame function starts the game
+newGame();
+
+//taking input from the user with the onkeyup event
+document.onkeyup = function (event) {
+    letter = event.key;
+
+    //a for loop that checks to see if the letter is in the word and how many times
+    for (var j = 0; j < word.length; j++) {
+        //if the letter is in the word, then replace the dash in the letterArray that corresponds with the index in word
+        if (word[j] === letter) {
+            letterArray[j] = letter;
+            document.getElementById("word").textContent = letterArray.join(" ");
+        }
+        //if the letter is not in the word, but is in the alphabet array
+        if ((word.includes(letter) === false) && (alphabet.includes(letter) === true)) {
+            //push the letter to the guessedLetters array and display it
+            guessedLetters.push(letter);
+            document.getElementById("guessed-letters").textContent = guessedLetters.join(" ");
+            //decrement guessesLeft and display
+            guessesLeft--;
+            document.getElementById("guesses-left").textContent = guessesLeft;
+            //find the index of the letter in the alphabet and splice it out of the alphabet array
+            //so the player can't guess the same letter twice
+            var index = alphabet.indexOf(letter.toLowerCase());
+            if (index > -1) {
+                alphabet.splice(index, 1);
+            }
+        }
+        //if guessesLeft is 0, reset the game.
+        if (guessesLeft === 0) {
+            newGame();
+        }
+
+        //if there are no dashes left in the letterArray, increment wins, display a picture, and reset the game
+        if (letterArray.indexOf("_") === -1) {
+            wins++;
+            imageIndex = breakfastFoods.indexOf(word);
+            document.getElementById("image").setAttribute('src', images[imageIndex]);
+            newGame();
+        }
+
+    }
 
 }
+
+
 
 
 
