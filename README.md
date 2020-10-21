@@ -37,7 +37,7 @@ This application is a simple word guess game like hangman - the user guesses let
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
-![Trivia Game](./assets/images/Word-Guess-Game.png "Trivia Game")
+![Word Guess Game](./assets/images/Word-Guess-Game.png "Word Guess Game")
 
 ### Built With
 * [HTML](https://developer.mozilla.org/en-US/docs/Learn/HTML)
@@ -116,5 +116,5 @@ Project Link: [https://github.com/celupanow/Word-Guess-Game](https://github.com/
 
 [product-screenshot]: images/screenshot.png
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMzEyMzkyNF19
+eyJoaXN0b3J5IjpbLTEyNDc2NDI3NzJdfQ==
 -->
